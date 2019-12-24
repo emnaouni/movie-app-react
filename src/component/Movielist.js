@@ -1,6 +1,7 @@
 import React from 'react';
 import './Movielist.css';
-import MovieCard from './MovieCard'
+import MovieCard from './MovieCard';
+import Hoc from './Hoc';
 
 
 class Movielist extends React.Component{
@@ -35,4 +36,4 @@ render(){
 }
 
 
-export default Movielist;
+export default Hoc(Movielist);

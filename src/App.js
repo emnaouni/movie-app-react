@@ -28,9 +28,18 @@ class App extends Component {
           }
       ],
         newRating: 1,
-        newtext:''
-      }
+        newtext:'',
+        isloading: true
+      } 
+       setTimeout(()=>{this.setState({isloading: false})}, 50000);
     }
+  
+  
+    //settimeout (fonction, time en mms)
+    //aprés 5 secons isloading:false
+    // isloading tit3Ada porps movielist 
+    //create hoc (compnent movielist (paramert majuscul )=> fonction if this.props.isloading ?isloading:movielist)
+    //export default hoc(movielist)
     giveRate = x => {
       this.setState({newRating: x})
     }
@@ -48,10 +57,11 @@ render(){
     <div className="App">
        <Header rate={this.state.newRating} giveNewRate={rate => this.giveRate(rate)} text={this.state.newtext} giveNewtext={ text=>this.giveText(text)}/>
         <AddModal addMovie={movie=>this.addNewmovie(movie)}/>
-        <Movielist movies={this.state.movies.filter(el => el.count >= this.state.newRating && el.title1.toUpperCase().includes(this.state.newtext.toUpperCase().trim()))}/>
+        <Movielist isloading={this.state.isloading}  movies={this.state.movies.filter(el => el.count >= this.state.newRating && el.title1.toUpperCase().includes(this.state.newtext.toUpperCase().trim()))}/>
  
     </div>
-  );}
+  );
+}
   
 }
 
